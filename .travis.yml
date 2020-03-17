@@ -1,0 +1,16 @@
+language: python
+python:
+  - 3.8
+
+env:
+  global:
+    # Doctr deploy key for regro/runthis-docs
+    - secure: "0TV6HWNlR9lkaL6e3CtS1azDj1F2zXVPUptKGlWFUUsKTTxrgc6Hjj8l9zNv4t6SBsofgbMXuYBbUf5yJMKx1X0aVWsu8dfRYHTmJJ5xNn7LNZ0DfB8y2LS1VUXR4nA3OLa7SD2RadO9k5f8KYhHz/bJHv9J98rZDnTy0OEYQh9QmxvbkDOhafBqAvPl7pZ5+ysPobnzmFXDUYHYvFT4eG4QQL6hld934fRI72Xnb0hH7/WK0RaLqakHB1+irjwayILjkPhONxN6pZfWVZt04OQHFz81V2MGbucftu1ryHoIpXmh2jQ5ETNwmNnO0NwYOBqqxWKrqrlBXGjb1RL0K7wg0iRFPjVxiik8wSsCQ1OlunSUfMdPGbEr4i04v1u3D2ioCdEMpPWSo6M1mFft1j2Ka5muGbU77DTh2YxuW0RRXNBDmxWNv+ztGvVwCe7g5PmVBVYFwap1jibblSe10VDZgpZmT3mvvYtHQVki753ekv/h4ukSOIq9CQRueaOxJnCRR3hGP/0oKzYQHqVU9Bmu1L1w6IX6f+EFrVtEM5i27Pa4R2oUgmLBnchJU2N2eva+A2VE/mEz5KZLu63CyHAzLReK+c5YE5AdtgR33BhSRbZ92Zq7ydhtyavj4PlMl2guhHnhf5Tgqpp6JIVvL4axh31WdKo8a3eP0OlSOwU="
+
+script:
+  - set -ex
+  - pip install --upgrade -r requirements.txt
+  - cd src;
+    make html;
+    cd ..;
+  - doctr deploy --built-docs src/_build/html .
