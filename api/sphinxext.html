@@ -1,0 +1,816 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sphinx Extension (runthis.sphinxext) &#8212; runthis 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/runthis-client.min.js"></script>
+
+    
+    
+     
+        <script src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Main Entry Points (runthis.server.main)" href="server/main.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="server/main.html" title="Main Entry Points (runthis.server.main)"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">runthis 0.0.1 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">RunThis Python API</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-runthis.sphinxext">
+<span id="sphinx-extension-runthis-sphinxext"></span><span id="runthis-sphinxext"></span><h1>Sphinx Extension (<code class="docutils literal notranslate"><span class="pre">runthis.sphinxext</span></code>)<a class="headerlink" href="#module-runthis.sphinxext" title="Permalink to this headline">¶</a></h1>
+<p>Sphinx extension which adds a directive for RunThis
+code-block that may be executed by clicking the “RunThis”
+button above the code block.</p>
+<p>The directive, like the standard code-block directive, takes
+a language argument and an optional linenos parameter.</p>
+<p>Examples:</p>
+<div id="runthis1"></div>
+<script type="text/javascript">
+  var app = Elm.Main.init({
+    node: document.getElementById("runthis1"),
+    flags: {"placeholder": "<div class=\"highlight-python notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">a</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n<span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"n\">a</span> <span class=\"o\">+</span> <span class=\"mi\">5</span>\n</pre></div>\n</div>\n", "presetup": "", "serverUrl": "http://runthis.xonsh.org", "setup": "a = 10\nb = a + 5\n"}
+  });
+</script>
+<div id="runthis2"></div>
+<script type="text/javascript">
+  var app = Elm.Main.init({
+    node: document.getElementById("runthis2"),
+    flags: {"placeholder": "<div class=\"highlight-python notranslate\"><div class=\"highlight\"><pre><span></span><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"mi\">10</span>\n<span class=\"n\">y</span> <span class=\"o\">=</span> <span class=\"n\">x</span> <span class=\"o\">+</span> <span class=\"mi\">5</span>\n</pre></div>\n</div>\n", "presetup": "", "serverUrl": "http://runthis.xonsh.org", "setup": "x = 10\ny = x + 5\n"}
+  });
+</script>
+<dl class="class">
+<dt id="runthis.sphinxext.RunThisCodeBlock">
+<em class="property">class </em><code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">RunThisCodeBlock</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">arguments</em>, <em class="sig-param">options</em>, <em class="sig-param">content</em>, <em class="sig-param">lineno</em>, <em class="sig-param">content_offset</em>, <em class="sig-param">block_text</em>, <em class="sig-param">state</em>, <em class="sig-param">state_machine</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>RunThis code block is executed as needed</p>
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.add_name">
+<code class="sig-name descname">add_name</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.add_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append self.options[‘name’] to node[‘names’] if it exists.</p>
+<p>Also normalize the name string and register it as explicit target.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.assert_has_content">
+<code class="sig-name descname">assert_has_content</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.assert_has_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Throw an ERROR-level DirectiveError if the directive doesn’t
+have contents.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.config">
+<em class="property">property </em><code class="sig-name descname">config</code><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference to the <a class="reference internal" href="server/config.html#runthis.server.config.Config" title="runthis.server.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.debug">
+<code class="sig-name descname">debug</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.debug" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.directive_error">
+<code class="sig-name descname">directive_error</code><span class="sig-paren">(</span><em class="sig-param">level</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.directive_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a DirectiveError suitable for being thrown as an exception.</p>
+<p>Call “raise self.directive_error(level, message)” from within
+a directive implementation to return one single system message
+at level <cite>level</cite>, which automatically gets the directive block
+and the line number added.</p>
+<p>Preferably use the <cite>debug</cite>, <cite>info</cite>, <cite>warning</cite>, <cite>error</cite>, or <cite>severe</cite>
+wrapper methods, e.g. <code class="docutils literal notranslate"><span class="pre">self.error(message)</span></code> to generate an
+ERROR-level directive error.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.env">
+<em class="property">property </em><code class="sig-name descname">env</code><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reference to the <code class="xref py py-class docutils literal notranslate"><span class="pre">BuildEnvironment</span></code> object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.error">
+<code class="sig-name descname">error</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.RunThisCodeBlock.final_argument_whitespace">
+<code class="sig-name descname">final_argument_whitespace</code><em class="property"> = False</em><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.final_argument_whitespace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.RunThisCodeBlock.has_content">
+<code class="sig-name descname">has_content</code><em class="property"> = True</em><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.has_content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.RunThisCodeBlock.option_spec">
+<code class="sig-name descname">option_spec</code><em class="property"> = {'caption': &lt;function unchanged_required&gt;, 'class': &lt;function class_option&gt;, 'dedent': &lt;class 'int'&gt;, 'emphasize-lines': &lt;function unchanged_required&gt;, 'force': &lt;function flag&gt;, 'label': &lt;class 'str'&gt;, 'lineno-start': &lt;class 'int'&gt;, 'linenos': &lt;function flag&gt;, 'name': &lt;function unchanged&gt;, 'starthidden': &lt;function nice_bool&gt;}</em><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.option_spec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.RunThisCodeBlock.optional_arguments">
+<code class="sig-name descname">optional_arguments</code><em class="property"> = 1</em><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.optional_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.RunThisCodeBlock.required_arguments">
+<code class="sig-name descname">required_arguments</code><em class="property"> = 0</em><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.required_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.set_source_info">
+<code class="sig-name descname">set_source_info</code><span class="sig-paren">(</span><em class="sig-param">node: docutils.nodes.Node</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.set_source_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set source and line number to the node.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.severe">
+<code class="sig-name descname">severe</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.severe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.RunThisCodeBlock.warning">
+<code class="sig-name descname">warning</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.RunThisCodeBlock.warning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.sphinxext.depart_runthis_html">
+<code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">depart_runthis_html</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.depart_runthis_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depart hidden code block</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.sphinxext.nice_bool">
+<code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">nice_bool</code><span class="sig-paren">(</span><em class="sig-param">arg</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.nice_bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="runthis.sphinxext.runthis_code_block">
+<em class="property">class </em><code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">runthis_code_block</code><span class="sig-paren">(</span><em class="sig-param">rawsource=''</em>, <em class="sig-param">text=''</em>, <em class="sig-param">*children</em>, <em class="sig-param">**attributes</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.append_attr_list">
+<code class="sig-name descname">append_attr_list</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">values</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.append_attr_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each element in values, if it does not exist in self[attr], append
+it.</p>
+<p>NOTE: Requires self[attr] and values to be sequence type and the
+former should specifically be a list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.asdom">
+<code class="sig-name descname">asdom</code><span class="sig-paren">(</span><em class="sig-param">dom=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.asdom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a DOM <strong>fragment</strong> representation of this Node.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.astext">
+<code class="sig-name descname">astext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.astext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string representation of this Node.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.attlist">
+<code class="sig-name descname">attlist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.attlist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.basic_attributes">
+<code class="sig-name descname">basic_attributes</code><em class="property"> = ('ids', 'classes', 'names', 'dupnames')</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.basic_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.child_text_separator">
+<code class="sig-name descname">child_text_separator</code><em class="property"> = ''</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.child_text_separator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.coerce_append_attr_list">
+<code class="sig-name descname">coerce_append_attr_list</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.coerce_append_attr_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>First, convert both self[attr] and value to a non-string sequence
+type; if either is not already a sequence, convert it to a list of one
+element.  Then call append_attr_list.</p>
+<p>NOTE: self[attr] and value both must not be None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; docutils.nodes.Element<a class="headerlink" href="#runthis.sphinxext.runthis_code_block.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.copy_attr_coerce">
+<code class="sig-name descname">copy_attr_coerce</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em>, <em class="sig-param">replace</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.copy_attr_coerce" title="Permalink to this definition">¶</a></dt>
+<dd><p>If attr is an attribute of self and either self[attr] or value is a
+list, convert all non-sequence values to a sequence of 1 element and
+then concatenate the two sequence, setting the result to self[attr].
+If both self[attr] and value are non-sequences and replace is True or
+self[attr] is None, replace self[attr] with value. Otherwise, do
+nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.copy_attr_concatenate">
+<code class="sig-name descname">copy_attr_concatenate</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em>, <em class="sig-param">replace</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.copy_attr_concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>If attr is an attribute of self and both self[attr] and value are
+lists, concatenate the two sequences, setting the result to
+self[attr].  If either self[attr] or value are non-sequences and
+replace is True or self[attr] is None, replace self[attr] with value.
+Otherwise, do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.copy_attr_consistent">
+<code class="sig-name descname">copy_attr_consistent</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em>, <em class="sig-param">replace</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.copy_attr_consistent" title="Permalink to this definition">¶</a></dt>
+<dd><p>If replace is True or self[attr] is None, replace self[attr] with
+value.  Otherwise, do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.copy_attr_convert">
+<code class="sig-name descname">copy_attr_convert</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em>, <em class="sig-param">replace=True</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.copy_attr_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>If attr is an attribute of self, set self[attr] to
+[self[attr], value], otherwise set self[attr] to value.</p>
+<dl class="simple">
+<dt>NOTE: replace is not used by this function and is kept only for</dt><dd><p>compatibility with the other copy functions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.deepcopy">
+<code class="sig-name descname">deepcopy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.deepcopy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a deep copy of self (also copying children).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.delattr">
+<code class="sig-name descname">delattr</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.delattr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.document">
+<code class="sig-name descname">document</code><em class="property"> = None</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.document" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.emptytag">
+<code class="sig-name descname">emptytag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.emptytag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.endtag">
+<code class="sig-name descname">endtag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.endtag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.extend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.first_child_matching_class">
+<code class="sig-name descname">first_child_matching_class</code><span class="sig-paren">(</span><em class="sig-param">childclass</em>, <em class="sig-param">start=0</em>, <em class="sig-param">end=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.first_child_matching_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of the first child whose class exactly matches.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>childclass</cite>: A <cite>Node</cite> subclass to search for, or a tuple of <cite>Node</cite>
+classes. If a tuple, any of the classes may match.</p></li>
+<li><p><cite>start</cite>: Initial index to check.</p></li>
+<li><p><cite>end</cite>: Initial index to <em>not</em> check.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.first_child_not_matching_class">
+<code class="sig-name descname">first_child_not_matching_class</code><span class="sig-paren">(</span><em class="sig-param">childclass</em>, <em class="sig-param">start=0</em>, <em class="sig-param">end=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.first_child_not_matching_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of the first child whose class does <em>not</em> match.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>childclass</cite>: A <cite>Node</cite> subclass to skip, or a tuple of <cite>Node</cite>
+classes. If a tuple, none of the classes may match.</p></li>
+<li><p><cite>start</cite>: Initial index to check.</p></li>
+<li><p><cite>end</cite>: Initial index to <em>not</em> check.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">failobj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.get_language_code">
+<code class="sig-name descname">get_language_code</code><span class="sig-paren">(</span><em class="sig-param">fallback=''</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.get_language_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return node’s language tag.</p>
+<p>Look iteratively in self and parents for a class argument
+starting with <code class="docutils literal notranslate"><span class="pre">language-</span></code> and return the remainder of it
+(which should be a <cite>BCP49</cite> language tag) or the <cite>fallback</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.has_key">
+<code class="sig-name descname">has_key</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.has_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.hasattr">
+<code class="sig-name descname">hasattr</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.hasattr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.index">
+<code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.insert">
+<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.is_not_default">
+<code class="sig-name descname">is_not_default</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.is_not_default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.is_not_known_attribute">
+<em class="property">classmethod </em><code class="sig-name descname">is_not_known_attribute</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.is_not_known_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if and only if the given attribute is NOT recognized by
+this class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.is_not_list_attribute">
+<em class="property">classmethod </em><code class="sig-name descname">is_not_list_attribute</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.is_not_list_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if and only if the given attribute is NOT one of the
+basic list attributes defined for all Elements.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.known_attributes">
+<code class="sig-name descname">known_attributes</code><em class="property"> = ('ids', 'classes', 'names', 'dupnames', 'backrefs', 'source', 'rawsource')</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.known_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.line">
+<code class="sig-name descname">line</code><em class="property"> = None</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.list_attributes">
+<code class="sig-name descname">list_attributes</code><em class="property"> = ('ids', 'classes', 'names', 'dupnames', 'backrefs')</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.list_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.local_attributes">
+<code class="sig-name descname">local_attributes</code><em class="property"> = ('backrefs',)</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.local_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.next_node">
+<code class="sig-name descname">next_node</code><span class="sig-paren">(</span><em class="sig-param">condition=None</em>, <em class="sig-param">include_self=False</em>, <em class="sig-param">descend=True</em>, <em class="sig-param">siblings=False</em>, <em class="sig-param">ascend=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.next_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first node in the iterable returned by traverse(),
+or None if the iterable is empty.</p>
+<p>Parameter list is the same as of traverse.  Note that
+include_self defaults to False, though.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.non_default_attributes">
+<code class="sig-name descname">non_default_attributes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.non_default_attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.note_referenced_by">
+<code class="sig-name descname">note_referenced_by</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.note_referenced_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Note that this Element has been referenced by its name
+<cite>name</cite> or id <cite>id</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.parent">
+<code class="sig-name descname">parent</code><em class="property"> = None</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.pformat">
+<code class="sig-name descname">pformat</code><span class="sig-paren">(</span><em class="sig-param">indent='    '</em>, <em class="sig-param">level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.pformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an indented pseudo-XML representation, for test purposes.</p>
+<p>Override in subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.pop">
+<code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param">i=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.pop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">item</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.remove" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.replace">
+<code class="sig-name descname">replace</code><span class="sig-paren">(</span><em class="sig-param">old</em>, <em class="sig-param">new</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace one child <cite>Node</cite> with another child or children.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.replace_attr">
+<code class="sig-name descname">replace_attr</code><span class="sig-paren">(</span><em class="sig-param">attr</em>, <em class="sig-param">value</em>, <em class="sig-param">force=True</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.replace_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p>If self[attr] does not exist or force is True or omitted, set
+self[attr] to value, otherwise do nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.replace_self">
+<code class="sig-name descname">replace_self</code><span class="sig-paren">(</span><em class="sig-param">new</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.replace_self" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace <cite>self</cite> node with <cite>new</cite>, where <cite>new</cite> is a node or a
+list of nodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.set_class">
+<code class="sig-name descname">set_class</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.set_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new class to the “classes” attribute.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.setdefault">
+<code class="sig-name descname">setdefault</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">failobj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.setup_child">
+<code class="sig-name descname">setup_child</code><span class="sig-paren">(</span><em class="sig-param">child</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.setup_child" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.shortrepr">
+<code class="sig-name descname">shortrepr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.shortrepr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.source">
+<code class="sig-name descname">source</code><em class="property"> = None</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.source" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.starttag">
+<code class="sig-name descname">starttag</code><span class="sig-paren">(</span><em class="sig-param">quoteattr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.starttag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.sphinxext.runthis_code_block.tagname">
+<code class="sig-name descname">tagname</code><em class="property"> = None</em><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.tagname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.traverse">
+<code class="sig-name descname">traverse</code><span class="sig-paren">(</span><em class="sig-param">condition=None</em>, <em class="sig-param">include_self=True</em>, <em class="sig-param">descend=True</em>, <em class="sig-param">siblings=False</em>, <em class="sig-param">ascend=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.traverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterable containing</p>
+<ul class="simple">
+<li><p>self (if include_self is true)</p></li>
+<li><p>all descendants in tree traversal order (if descend is true)</p></li>
+<li><p>all siblings (if siblings is true) and their descendants (if
+also descend is true)</p></li>
+<li><p>the siblings of the parent (if ascend is true) and their
+descendants (if also descend is true), and so on</p></li>
+</ul>
+<p>If <cite>condition</cite> is not None, the iterable contains only nodes
+for which <code class="docutils literal notranslate"><span class="pre">condition(node)</span></code> is true.  If <cite>condition</cite> is a
+node class <code class="docutils literal notranslate"><span class="pre">cls</span></code>, it is equivalent to a function consisting
+of <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">isinstance(node,</span> <span class="pre">cls)</span></code>.</p>
+<p>If ascend is true, assume siblings to be true as well.</p>
+<p>For example, given the following tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">paragraph</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">emphasis</span><span class="o">&gt;</span>      <span class="o">&lt;---</span> <span class="n">emphasis</span><span class="o">.</span><span class="n">traverse</span><span class="p">()</span> <span class="ow">and</span>
+        <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span>    <span class="o">&lt;---</span> <span class="n">strong</span><span class="o">.</span><span class="n">traverse</span><span class="p">()</span> <span class="n">are</span> <span class="n">called</span><span class="o">.</span>
+            <span class="n">Foo</span>
+        <span class="n">Bar</span>
+    <span class="o">&lt;</span><span class="n">reference</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Baz&quot;</span> <span class="n">refid</span><span class="o">=</span><span class="s2">&quot;baz&quot;</span><span class="o">&gt;</span>
+        <span class="n">Baz</span>
+</pre></div>
+</div>
+<p>Then list(emphasis.traverse()) equals</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">emphasis</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="c1">#text: Foo&gt;, &lt;#text: Bar&gt;]</span>
+</pre></div>
+</div>
+<p>and list(strong.traverse(ascend=True)) equals</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="c1">#text: Foo&gt;, &lt;#text: Bar&gt;, &lt;reference&gt;, &lt;#text: Baz&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_all_atts">
+<code class="sig-name descname">update_all_atts</code><span class="sig-paren">(</span><em class="sig-param">dict_</em>, <em class="sig-param">update_fun=&lt;function Element.copy_attr_consistent&gt;</em>, <em class="sig-param">replace=True</em>, <em class="sig-param">and_source=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_all_atts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all attributes from node or dictionary <cite>dict_</cite>.</p>
+<p>Appends the basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) and then, for all other attributes in
+<a href="#id1"><span class="problematic" id="id2">dict_</span></a>, updates the same attribute in self.  When attributes with the
+same identifier appear in both self and <a href="#id3"><span class="problematic" id="id4">dict_</span></a>, the two values are
+merged based on the value of update_fun.  Generally, when replace is
+True, the values in self are replaced or merged with the values in
+<a href="#id5"><span class="problematic" id="id6">dict_</span></a>; otherwise, the values in self may be preserved or merged.  When
+and_source is True, the ‘source’ attribute is included in the copy.</p>
+<dl class="simple">
+<dt>NOTE: When replace is False, and self contains a ‘source’ attribute,</dt><dd><p>‘source’ is not replaced even when <a href="#id7"><span class="problematic" id="id8">dict_</span></a> has a ‘source’
+attribute, though it may still be merged into a list depending
+on the value of update_fun.</p>
+</dd>
+<dt>NOTE: It is easier to call the update-specific methods then to pass</dt><dd><p>the update_fun method to this function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_all_atts_coercion">
+<code class="sig-name descname">update_all_atts_coercion</code><span class="sig-paren">(</span><em class="sig-param">dict_</em>, <em class="sig-param">replace=True</em>, <em class="sig-param">and_source=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_all_atts_coercion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all attributes from node or dictionary <cite>dict_</cite>.</p>
+<p>Appends the basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) and then, for all other attributes in
+<a href="#id9"><span class="problematic" id="id10">dict_</span></a>, updates the same attribute in self.  When attributes with the
+same identifier appear in both self and <a href="#id11"><span class="problematic" id="id12">dict_</span></a> whose values are both
+not lists and replace is True, the values in self are replaced with
+the values in <a href="#id13"><span class="problematic" id="id14">dict_</span></a>; if either of the values from self and <a href="#id15"><span class="problematic" id="id16">dict_</span></a> for
+the given identifier are of list type, then first any non-lists are
+converted to 1-element lists and then the two lists are concatenated
+and the result stored in self; otherwise, the values in self are
+preserved.  When and_source is True, the ‘source’ attribute is
+included in the copy.</p>
+<dl class="simple">
+<dt>NOTE: When replace is False, and self contains a ‘source’ attribute,</dt><dd><p>‘source’ is not replaced even when <a href="#id17"><span class="problematic" id="id18">dict_</span></a> has a ‘source’
+attribute, though it may still be merged into a list depending
+on the value of update_fun.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_all_atts_concatenating">
+<code class="sig-name descname">update_all_atts_concatenating</code><span class="sig-paren">(</span><em class="sig-param">dict_</em>, <em class="sig-param">replace=True</em>, <em class="sig-param">and_source=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_all_atts_concatenating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all attributes from node or dictionary <cite>dict_</cite>.</p>
+<p>Appends the basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) and then, for all other attributes in
+<a href="#id19"><span class="problematic" id="id20">dict_</span></a>, updates the same attribute in self.  When attributes with the
+same identifier appear in both self and <a href="#id21"><span class="problematic" id="id22">dict_</span></a> whose values aren’t each
+lists and replace is True, the values in self are replaced with the
+values in <a href="#id23"><span class="problematic" id="id24">dict_</span></a>; if the values from self and <a href="#id25"><span class="problematic" id="id26">dict_</span></a> for the given
+identifier are both of list type, then the two lists are concatenated
+and the result stored in self; otherwise, the values in self are
+preserved.  When and_source is True, the ‘source’ attribute is
+included in the copy.</p>
+<dl class="simple">
+<dt>NOTE: When replace is False, and self contains a ‘source’ attribute,</dt><dd><p>‘source’ is not replaced even when <a href="#id27"><span class="problematic" id="id28">dict_</span></a> has a ‘source’
+attribute, though it may still be merged into a list depending
+on the value of update_fun.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_all_atts_consistantly">
+<code class="sig-name descname">update_all_atts_consistantly</code><span class="sig-paren">(</span><em class="sig-param">dict_</em>, <em class="sig-param">replace=True</em>, <em class="sig-param">and_source=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_all_atts_consistantly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all attributes from node or dictionary <cite>dict_</cite>.</p>
+<p>Appends the basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) and then, for all other attributes in
+<a href="#id29"><span class="problematic" id="id30">dict_</span></a>, updates the same attribute in self.  When attributes with the
+same identifier appear in both self and <a href="#id31"><span class="problematic" id="id32">dict_</span></a> and replace is True, the
+values in self are replaced with the values in <a href="#id33"><span class="problematic" id="id34">dict_</span></a>; otherwise, the
+values in self are preserved.  When and_source is True, the ‘source’
+attribute is included in the copy.</p>
+<dl class="simple">
+<dt>NOTE: When replace is False, and self contains a ‘source’ attribute,</dt><dd><p>‘source’ is not replaced even when <a href="#id35"><span class="problematic" id="id36">dict_</span></a> has a ‘source’
+attribute, though it may still be merged into a list depending
+on the value of update_fun.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_all_atts_convert">
+<code class="sig-name descname">update_all_atts_convert</code><span class="sig-paren">(</span><em class="sig-param">dict_</em>, <em class="sig-param">and_source=False</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_all_atts_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all attributes from node or dictionary <cite>dict_</cite>.</p>
+<p>Appends the basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) and then, for all other attributes in
+<a href="#id37"><span class="problematic" id="id38">dict_</span></a>, updates the same attribute in self.  When attributes with the
+same identifier appear in both self and <a href="#id39"><span class="problematic" id="id40">dict_</span></a> then first any non-lists
+are converted to 1-element lists and then the two lists are
+concatenated and the result stored in self; otherwise, the values in
+self are preserved.  When and_source is True, the ‘source’ attribute
+is included in the copy.</p>
+<dl class="simple">
+<dt>NOTE: When replace is False, and self contains a ‘source’ attribute,</dt><dd><p>‘source’ is not replaced even when <a href="#id41"><span class="problematic" id="id42">dict_</span></a> has a ‘source’
+attribute, though it may still be merged into a list depending
+on the value of update_fun.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.update_basic_atts">
+<code class="sig-name descname">update_basic_atts</code><span class="sig-paren">(</span><em class="sig-param">dict_</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.update_basic_atts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update basic attributes (‘ids’, ‘names’, ‘classes’,
+‘dupnames’, but not ‘source’) from node or dictionary <cite>dict_</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.walk">
+<code class="sig-name descname">walk</code><span class="sig-paren">(</span><em class="sig-param">visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traverse a tree of <cite>Node</cite> objects, calling the
+<cite>dispatch_visit()</cite> method of <cite>visitor</cite> when entering each
+node.  (The <cite>walkabout()</cite> method is similar, except it also
+calls the <cite>dispatch_departure()</cite> method before exiting each
+node.)</p>
+<p>This tree traversal supports limited in-place tree
+modifications.  Replacing one node with one or more nodes is
+OK, as is removing an element.  However, if the node removed
+or replaced occurs after the current node, the old node will
+still be traversed, and any new nodes will not.</p>
+<p>Within <code class="docutils literal notranslate"><span class="pre">visit</span></code> methods (and <code class="docutils literal notranslate"><span class="pre">depart</span></code> methods for
+<cite>walkabout()</cite>), <cite>TreePruningException</cite> subclasses may be raised
+(<cite>SkipChildren</cite>, <cite>SkipSiblings</cite>, <cite>SkipNode</cite>, <cite>SkipDeparture</cite>).</p>
+<p>Parameter <cite>visitor</cite>: A <cite>NodeVisitor</cite> object, containing a
+<code class="docutils literal notranslate"><span class="pre">visit</span></code> implementation for each <cite>Node</cite> subclass encountered.</p>
+<p>Return true if we should stop the traversal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="runthis.sphinxext.runthis_code_block.walkabout">
+<code class="sig-name descname">walkabout</code><span class="sig-paren">(</span><em class="sig-param">visitor</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.runthis_code_block.walkabout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a tree traversal similarly to <cite>Node.walk()</cite> (which
+see), except also call the <cite>dispatch_departure()</cite> method
+before exiting each node.</p>
+<p>Parameter <cite>visitor</cite>: A <cite>NodeVisitor</cite> object, containing a
+<code class="docutils literal notranslate"><span class="pre">visit</span></code> and <code class="docutils literal notranslate"><span class="pre">depart</span></code> implementation for each <cite>Node</cite>
+subclass encountered.</p>
+<p>Return true if we should stop the traversal.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.sphinxext.setup">
+<code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">setup</code><span class="sig-paren">(</span><em class="sig-param">app</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="runthis.sphinxext.visit_runthis_html">
+<code class="sig-prename descclassname">runthis.sphinxext.</code><code class="sig-name descname">visit_runthis_html</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">node</em>, <em class="sig-param">app=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.sphinxext.visit_runthis_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visit runthis code block</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/runthis-logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="server/main.html"
+                          title="Previous page">&larr; Main Entry Points (<code class="docutils literal notranslate"><span class="pre">runthis.server.main</span></code>)</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/sphinxext.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="server/main.html" title="Main Entry Points (runthis.server.main)"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">runthis 0.0.1 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >RunThis Python API</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2020, regro.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

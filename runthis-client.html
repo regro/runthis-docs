@@ -1,0 +1,220 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>runthis-client &#8212; runthis 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/runthis-client.min.js"></script>
+
+    
+    
+     
+        <script src="_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="runthis-sphinxext" href="runthis-sphinxext.html" />
+    <link rel="prev" title="runthis-server" href="runthis-server.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-sphinxext.html" title="runthis-sphinxext"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-server.html" title="runthis-server"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="runthis-client">
+<h1>runthis-client<a class="headerlink" href="#runthis-client" title="Permalink to this headline">¶</a></h1>
+<p>This is a web client for the RunThis project. This project makes it easy to
+connect to a RunThis server.</p>
+<p>The client here displays a “Run This” button and placeholder HTML so that the
+terminal session is not started when the page first loads. Clicking the
+RunThis button will cause the placeholder HTML to be replaced by an active
+connection to the terminal session.</p>
+<div class="section" id="downloads">
+<h2>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h2>
+<p>The client is available on the GitHub releases page: https://github.com/regro/runthis-client/releases</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>This project is an <a class="reference external" href="https://elm-lang.org/">elm</a> application that can be used mutliple times
+within a page. Here is a basic example that load the minified version of the JavaScript,
+and passes in valid parameters to the application and onto the RunThis Server.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>RunThis Client Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;css/theme.css&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;path/to/runthis-client.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;elm&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">Elm</span><span class="p">.</span><span class="nx">Main</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="nx">node</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;elm&#39;</span><span class="p">),</span>
+    <span class="nx">flags</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c">&lt;!--</span> <span class="nx">HTML</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">displayed</span> <span class="nx">prior</span> <span class="nx">to</span> <span class="s2">&quot;Run This&quot;</span> <span class="nx">button</span> <span class="nx">click</span> <span class="o">--&gt;</span>
+        <span class="nx">placeholder</span><span class="o">:</span> <span class="s2">&quot;I&#39;m here&quot;</span><span class="p">,</span>
+
+        <span class="c">&lt;!--</span> <span class="nx">The</span> <span class="nx">base</span> <span class="nx">URL</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">RunThis</span> <span class="nx">Server</span> <span class="o">--&gt;</span>
+        <span class="nx">serverUrl</span><span class="o">:</span> <span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">,</span>
+
+        <span class="c">&lt;!--</span> <span class="nx">Code</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">run</span> <span class="nx">silently</span> <span class="nx">at</span> <span class="nx">the</span> <span class="nx">start</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">command</span> <span class="o">--&gt;</span>
+        <span class="nx">presetup</span><span class="o">:</span> <span class="s2">&quot;import sys&quot;</span><span class="p">,</span>
+
+        <span class="c">&lt;!--</span> <span class="nx">Initial</span> <span class="nx">code</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">run</span> <span class="nx">and</span> <span class="nx">echoed</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">screen</span> <span class="o">--&gt;</span>
+        <span class="nx">setup</span><span class="o">:</span> <span class="s2">&quot;print(sys.executable)&quot;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="index.html" title="index">
+          <img class="logo" src="_static/runthis-logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="index.html">Overview</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">runthis-client</a><ul>
+<li><a class="reference internal" href="#downloads">Downloads</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="runthis-server.html"
+                          title="Previous page">&larr; runthis-server</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="runthis-sphinxext.html"
+                          title="Next page">&rarr; runthis-sphinxext</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/runthis-client.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-sphinxext.html" title="runthis-sphinxext"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-server.html" title="runthis-server"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2020, regro.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

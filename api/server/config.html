@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuration (runthis.server.config) &#8212; runthis 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/runthis-client.min.js"></script>
+
+    
+    
+     
+        <script src="../../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="../../_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Language Specific Dispatch (runthis.server.langs)" href="langs.html" />
+    <link rel="prev" title="RunThis Server API" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="langs.html" title="Language Specific Dispatch (runthis.server.langs)"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="RunThis Server API"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">runthis 0.0.1 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >RunThis Python API</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">RunThis Server API</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-runthis.server.config">
+<span id="configuration-runthis-server-config"></span><span id="runthis-server-config"></span><h1>Configuration (<code class="docutils literal notranslate"><span class="pre">runthis.server.config</span></code>)<a class="headerlink" href="#module-runthis.server.config" title="Permalink to this headline">¶</a></h1>
+<p>Config specification for runthis-server</p>
+<dl class="class">
+<dt id="runthis.server.config.Config">
+<em class="property">class </em><code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">Config</code><span class="sig-paren">(</span><em class="sig-param">command: str = 'python3'</em>, <em class="sig-param">docker: bool = True</em>, <em class="sig-param">docker_image: str = 'ubuntu:latest'</em>, <em class="sig-param">gotty_path: str = 'gotty'</em>, <em class="sig-param">host: str = '127.0.0.1'</em>, <em class="sig-param">port: int = 5000</em>, <em class="sig-param">tty_server: str = 'gotty'</em>, <em class="sig-param">tty_server_port_start: int = 8080</em>, <em class="sig-param">ttyd_path: str = 'ttyd'</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="runthis.server.config.Config.command">
+<code class="sig-name descname">command</code><em class="property">: str</em><em class="property"> = 'python3'</em><a class="headerlink" href="#runthis.server.config.Config.command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.docker">
+<code class="sig-name descname">docker</code><em class="property">: bool</em><em class="property"> = True</em><a class="headerlink" href="#runthis.server.config.Config.docker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.docker_image">
+<code class="sig-name descname">docker_image</code><em class="property">: str</em><em class="property"> = 'ubuntu:latest'</em><a class="headerlink" href="#runthis.server.config.Config.docker_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.gotty_path">
+<code class="sig-name descname">gotty_path</code><em class="property">: str</em><em class="property"> = 'gotty'</em><a class="headerlink" href="#runthis.server.config.Config.gotty_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.host">
+<code class="sig-name descname">host</code><em class="property">: str</em><em class="property"> = '127.0.0.1'</em><a class="headerlink" href="#runthis.server.config.Config.host" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.port">
+<code class="sig-name descname">port</code><em class="property">: int</em><em class="property"> = 5000</em><a class="headerlink" href="#runthis.server.config.Config.port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.tty_server">
+<code class="sig-name descname">tty_server</code><em class="property">: str</em><em class="property"> = 'gotty'</em><a class="headerlink" href="#runthis.server.config.Config.tty_server" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.tty_server_port_start">
+<code class="sig-name descname">tty_server_port_start</code><em class="property">: int</em><em class="property"> = 8080</em><a class="headerlink" href="#runthis.server.config.Config.tty_server_port_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.ttyd_path">
+<code class="sig-name descname">ttyd_path</code><em class="property">: str</em><em class="property"> = 'ttyd'</em><a class="headerlink" href="#runthis.server.config.Config.ttyd_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.server.config.ensure_list">
+<code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">ensure_list</code><span class="sig-paren">(</span><em class="sig-param">var</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.ensure_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts to a list, safely</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.server.config.ensure_set">
+<code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">ensure_set</code><span class="sig-paren">(</span><em class="sig-param">var</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.ensure_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts to a set, safely</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="runthis.server.config.get_config_from_yaml">
+<code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">get_config_from_yaml</code><span class="sig-paren">(</span><em class="sig-param">yaml_path</em>, <em class="sig-param">config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.get_config_from_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free function responsible to create or fill a <cite>Config</cite> object
+with the content of a yaml file.</p>
+<dl class="simple">
+<dt>yaml_path<span class="classifier">str</span></dt><dd><p>Path to the YAML file</p>
+</dd>
+<dt>config<span class="classifier">Config, optional</span></dt><dd><p>If it is received a Config object it will be filled otherwise
+this function will create a new Config object.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Config</dt><dd><p>Config object with the yaml configuration</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../../index.html" title="index">
+          <img class="logo" src="../../_static/runthis-logo.png" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; RunThis Server API</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="langs.html"
+                          title="Next page">&rarr; Language Specific Dispatch (<code class="docutils literal notranslate"><span class="pre">runthis.server.langs</span></code>)</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/server/config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="langs.html" title="Language Specific Dispatch (runthis.server.langs)"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="RunThis Server API"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../../index.html">runthis 0.0.1 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="../index.html" >RunThis Python API</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >RunThis Server API</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2020, regro.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,285 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>runthis-server &#8212; runthis 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/runthis-client.min.js"></script>
+
+    
+    
+     
+        <script src="_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="runthis-client" href="runthis-client.html" />
+    <link rel="prev" title="RunThis" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-client.html" title="runthis-client"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="RunThis"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="runthis-server">
+<h1>runthis-server<a class="headerlink" href="#runthis-server" title="Permalink to this headline">¶</a></h1>
+<p>RunThis Server is a tool for serving up unique, interactive terminal sessions over HTTP.
+This enables interactive demonstration pages and documentation for a variety of
+command-line applications.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>RunThis-server may be installed with either conda or pip:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the conda-forge channel</span>
+$ conda install -c conda-forge runthis-server
+
+<span class="c1"># Or you can use Pip, if you must.</span>
+$ pip install runthis-server
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>You can start up the server with the <code class="docutils literal notranslate"><span class="pre">runthis-server</span></code> command line utility.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ runthis-server --help
+usage: runthis-server <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--config CONFIG<span class="o">]</span>
+
+optional arguments:
+  -h, --help       show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --config CONFIG  Path to config file
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>By default, the server is configured to run by looking for a <code class="docutils literal notranslate"><span class="pre">runthis-server.yml</span></code> file
+in the current working directory. You can pass in a specific configuration file with
+the <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</p>
+<p>All configuration variables are optional. The following lists there meaning and
+default values. Usually, these appear as top-level keys in the YAML file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># The command variable is a string that lists ths command, or path</span>
+<span class="c1"># to run whenever a new instance is requested. Nominally, this is</span>
+<span class="c1"># a command that starts a REPL, but doesn&#39;t have to be.</span>
+<span class="nt">command</span><span class="p">:</span> <span class="s">&quot;python3&quot;</span>
+
+<span class="c1"># The docker variable is a boolean that determines whether or not</span>
+<span class="c1"># the command should be run in its own single-use docker container.</span>
+<span class="c1"># Docker, of course, must be available on the host.</span>
+<span class="nt">docker</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># The docker_image varible specifies which docker image should be</span>
+<span class="c1"># started up if the command is being run in a docker container.</span>
+<span class="nt">docker_image</span><span class="p">:</span> <span class="s">&quot;ubuntu:latest&quot;</span>
+
+<span class="c1"># The host variable is the URL or IP address that the server is</span>
+<span class="c1"># running on. By default, this is &quot;127.0.0.1&quot;. Other valid options are</span>
+<span class="c1"># &quot;0.0.0.0&quot;, which will expose the server to the outside world, as well</span>
+<span class="c1"># as any valid CNAME or IP address. RunThis Server works by taking in</span>
+<span class="c1"># a request and then redirecting to a new port on this server. The selection</span>
+<span class="c1"># of the host determines the redirection address. Here is the mapping:</span>
+<span class="c1">#</span>
+<span class="c1">#  host        -&gt; TTY redirect_base</span>
+<span class="c1">#  127.0.0.1   -&gt; 0.0.0.0</span>
+<span class="c1">#  0.0.0.0     -&gt; IP address of server as seen by https://api.ipify.org</span>
+<span class="c1">#  IP or CNAME -&gt; Same IP or CNAME</span>
+<span class="nt">host</span><span class="p">:</span> <span class="s">&quot;127.0.0.1&quot;</span>
+
+<span class="c1"># The port variable is an int that specifies the port number that the</span>
+<span class="c1"># the RunThis Server itself operates on. The TTY redirects go to</span>
+<span class="c1"># separate ports. Therefore you would access the RunThis Server as f&quot;http://{host}:{port}&quot;</span>
+<span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+
+<span class="c1"># The tty_server variable is a string flag that represents the TTY server software that</span>
+<span class="c1"># will be executed each time a request is made. Currently, the valid options are:</span>
+<span class="c1">#</span>
+<span class="c1">#  gotty: go-based TTY server https://github.com/yudai/gotty</span>
+<span class="c1">#  ttyd: C++ TTY server https://tsl0922.github.io/ttyd/</span>
+<span class="nt">tty_server</span><span class="p">:</span> <span class="s">&quot;gotty&quot;</span>
+
+<span class="c1"># The gotty_path is the path to the gotty executable</span>
+<span class="nt">gotty_path</span><span class="p">:</span> <span class="s">&quot;gotty&quot;</span>
+
+<span class="c1"># The ttyd_path is the path to the ttyd executable</span>
+<span class="nt">ttyd_path</span><span class="p">:</span> <span class="s">&quot;ttyd&quot;</span>
+
+<span class="c1"># The tty_server_port_start variable is an integer at which the TTY servers</span>
+<span class="c1"># will start serving their terminals. Each successive request increases this</span>
+<span class="c1"># value by one, so that each session recieves its own unique value.</span>
+<span class="nt">tty_server_port_start</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+</div>
+<p>The above values may also be embedded into a top-level <code class="docutils literal notranslate"><span class="pre">runthis</span></code> key,
+if needed for compatibily with other files. For exmaple,</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">runthis</span><span class="p">:</span>
+    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="request-parameters">
+<h2>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Requests of the server are be made to the URL <code class="docutils literal notranslate"><span class="pre">f&quot;http://{host}:{port}&quot;</span></code>.
+However, this URL accepts either GET or POST requests and takes
+the following parameters as options.</p>
+<p><strong>presetup:</strong> This is code that the new interpreter session is initialized.
+It is executed without any notification to the user.</p>
+<p><strong>setup:</strong> This is code that is executed right when the interpreter starts
+up, after the presetup code is executed. Additionally, this code is echoed
+(printed in its source form) to the user prior to being execute. This is
+good for running examples.</p>
+<p>For example, the following GET request would run <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code> silently, and then
+execute <code class="docutils literal notranslate"><span class="pre">print(sys.executable)</span></code> after printing literally <code class="docutils literal notranslate"><span class="pre">&quot;print(sys.executable)&quot;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://127.0.0.1:5000/?presetup=import+sys&amp;setup=print%28sys.executable%29
+</pre></div>
+</div>
+<p>Usually, you should have a URL encoding library generate these URLs from
+source code for you.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="index.html" title="index">
+          <img class="logo" src="_static/runthis-logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="index.html">Overview</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">runthis-server</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#request-parameters">Request Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; RunThis</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="runthis-client.html"
+                          title="Next page">&rarr; runthis-client</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/runthis-server.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-client.html" title="runthis-client"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="RunThis"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2020, regro.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

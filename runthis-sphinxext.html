@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>runthis-sphinxext &#8212; runthis 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/runthis-client.min.js"></script>
+
+    
+    
+     
+        <script src="_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script src="_static/cloud.js"></script>
+    
+
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RunThis Python API" href="api/index.html" />
+    <link rel="prev" title="runthis-client" href="runthis-client.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="api/index.html" title="RunThis Python API"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-client.html" title="runthis-client"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="runthis-sphinxext">
+<h1>runthis-sphinxext<a class="headerlink" href="#runthis-sphinxext" title="Permalink to this headline">¶</a></h1>
+<p>This provides a sphinx extension that adds RunThis code blocks,
+which display a highligthed code-block statically, but with a
+“RunThis” button above them. When the button is clicked, the code
+block is replaced by a terminal session that has executed that
+code.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>RunThis Sphinx Extention may be installed with either conda or pip:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the conda-forge channel</span>
+$ conda install -c conda-forge runthis-sphinxext
+
+<span class="c1"># Or you can use Pip, if you must.</span>
+$ pip install runthis-sphinxext
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use the RunThis code blocks, you must configure sphinx to know about
+RunThis. First, make sure the sphinx extension is registered. In the
+<code class="docutils literal notranslate"><span class="pre">conf.py</span></code>, add <code class="docutils literal notranslate"><span class="pre">runthis.sphinxext</span></code> somewhere in the extensions block:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;runthis.sphinxext&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>After this, you also need to tell sphinx where the RunThis Server is
+located.  This can be set with the <code class="docutils literal notranslate"><span class="pre">runthis_server</span></code> variable anywhere
+in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># runthis options</span>
+<span class="n">runthis_server</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:5000&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>To use the RunThis directive is very similar to the <code class="docutils literal notranslate"><span class="pre">code-block</span></code>
+directive in rST. In any of your <code class="docutils literal notranslate"><span class="pre">*.rst</span></code> files, you may use
+the <code class="docutils literal notranslate"><span class="pre">runthis</span></code> directive, followed by the language name on the
+same line.  After any <code class="docutils literal notranslate"><span class="pre">code-block</span></code> options and one or more blank lines,
+the code that you wish to display and run, is in an indented block.
+For example:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">runthis</span><span class="p">::</span> python
+
+    import sys
+    print(sys.executable)
+</pre></div>
+</div>
+<p>This will be run on the remote server specified in the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="index.html" title="index">
+          <img class="logo" src="_static/runthis-logo.png" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="index.html">Overview</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">runthis-sphinxext</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="runthis-client.html"
+                          title="Previous page">&larr; runthis-client</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="api/index.html"
+                          title="Next page">&rarr; RunThis Python API</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/runthis-sphinxext.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="api/index.html" title="RunThis Python API"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="runthis-client.html" title="runthis-client"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="index.html">runthis 0.0.1 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019-2020, regro.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
