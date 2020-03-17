@@ -1,4 +1,5 @@
 cloud_sptheme
+recommonmark
 numpydoc
 Sphinx
 doctr
