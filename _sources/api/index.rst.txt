@@ -10,7 +10,7 @@ For those of you who want the gritty details.
 .. toctree::
     :maxdepth: 2
 
-    server/index
+    server/index.rst
 
 
 **Spinx Extension:**

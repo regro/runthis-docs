@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Main Entry Points (runthis.server.main) &#8212; runthis 0.0.2 documentation</title>
+    <title>Main Entry Points (runthis.server.main) &#8212; runthis 0.0.3 documentation</title>
     <link rel="stylesheet" href="../../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
@@ -36,7 +36,7 @@
 
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Sphinx Extension (runthis.sphinxext)" href="../sphinxext.html" />
+    <link rel="next" title="Hypercorn Application (runthis.server.hypercorn)" href="hypercorn.html" />
     <link rel="prev" title="Language Specific Dispatch (runthis.server.langs)" href="langs.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -52,12 +52,12 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="../sphinxext.html" title="Sphinx Extension (runthis.sphinxext)"
+          <a href="hypercorn.html" title="Hypercorn Application (runthis.server.hypercorn)"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="langs.html" title="Language Specific Dispatch (runthis.server.langs)"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../../index.html">runthis 0.0.2 documentation</a> &#187;</li>
+    <li><a href="../../index.html">runthis 0.0.3 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >RunThis Python API</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">RunThis Server API</a> &#187;</li> 
@@ -85,12 +85,6 @@
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="runthis.server.main.hypercorn">
-<em class="property">async </em><code class="sig-prename descclassname">runthis.server.main.</code><code class="sig-name descname">hypercorn</code><span class="sig-paren">(</span><em class="sig-param">scope</em>, <em class="sig-param">receive</em>, <em class="sig-param">send</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.main.hypercorn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main entrypoint for runthis-server in production using hypercorn.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="runthis.server.main.main">
 <code class="sig-prename descclassname">runthis.server.main.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.main.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main entrypoint for runthis-server in testing.</p>
@@ -111,6 +105,11 @@
 <code class="sig-prename descclassname">runthis.server.main.</code><code class="sig-name descname">startup</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.main.startup" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="function">
+<dt id="runthis.server.main.version">
+<em class="property">async </em><code class="sig-prename descclassname">runthis.server.main.</code><code class="sig-name descname">version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.main.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -129,8 +128,8 @@
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="../sphinxext.html"
-                          title="Next page">&rarr; Sphinx Extension (<code class="docutils literal notranslate"><span class="pre">runthis.sphinxext</span></code>)</a></p>
+    <p class="topless"><a href="hypercorn.html"
+                          title="Next page">&rarr; Hypercorn Application (<code class="docutils literal notranslate"><span class="pre">runthis.server.hypercorn</span></code>)</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -182,12 +181,12 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="../sphinxext.html" title="Sphinx Extension (runthis.sphinxext)"
+          <a href="hypercorn.html" title="Hypercorn Application (runthis.server.hypercorn)"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="langs.html" title="Language Specific Dispatch (runthis.server.langs)"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../../index.html">runthis 0.0.2 documentation</a> &#187;</li>
+    <li><a href="../../index.html">runthis 0.0.3 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >RunThis Python API</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="index.html" >RunThis Server API</a> &#187;</li> 

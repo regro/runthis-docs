@@ -1,5 +1,6 @@
 ./_sources/api/index.rst.txt
 ./_sources/api/server/config.rst.txt
+./_sources/api/server/hypercorn.rst.txt
 ./_sources/api/server/index.rst.txt
 ./_sources/api/server/langs.rst.txt
 ./_sources/api/server/main.rst.txt
@@ -38,6 +39,7 @@
 ./_static/underscore.js
 ./api/index.html
 ./api/server/config.html
+./api/server/hypercorn.html
 ./api/server/index.html
 ./api/server/langs.html
 ./api/server/main.html
