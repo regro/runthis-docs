@@ -1,4 +1,4 @@
-.. _api:
+.. _api_server:
 
 ==================
 RunThis Server API
@@ -8,6 +8,7 @@ RunThis Server API
 .. toctree::
     :maxdepth: 2
 
-    config
-    langs
-    main
+    config.rst
+    langs.rst
+    main.rst
+    hypercorn.rst
