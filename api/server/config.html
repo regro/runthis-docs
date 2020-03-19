@@ -76,8 +76,13 @@
 <p>Config specification for runthis-server</p>
 <dl class="class">
 <dt id="runthis.server.config.Config">
-<em class="property">class </em><code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">Config</code><span class="sig-paren">(</span><em class="sig-param">command: str = 'python3'</em>, <em class="sig-param">docker: bool = True</em>, <em class="sig-param">docker_image: str = 'ubuntu:latest'</em>, <em class="sig-param">gotty_path: str = 'gotty'</em>, <em class="sig-param">host: str = '127.0.0.1'</em>, <em class="sig-param">port: int = 5000</em>, <em class="sig-param">tty_server: str = 'gotty'</em>, <em class="sig-param">tty_server_port_start: int = 8080</em>, <em class="sig-param">ttyd_path: str = 'ttyd'</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.Config" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">runthis.server.config.</code><code class="sig-name descname">Config</code><span class="sig-paren">(</span><em class="sig-param">certfile: str = None</em>, <em class="sig-param">command: str = 'python3'</em>, <em class="sig-param">docker: bool = True</em>, <em class="sig-param">docker_image: str = 'ubuntu:latest'</em>, <em class="sig-param">gotty_path: str = 'gotty'</em>, <em class="sig-param">host: str = '127.0.0.1'</em>, <em class="sig-param">keyfile: str = None</em>, <em class="sig-param">port: int = 5000</em>, <em class="sig-param">tty_server: str = 'gotty'</em>, <em class="sig-param">tty_server_port_start: int = 8080</em>, <em class="sig-param">ttyd_path: str = 'ttyd'</em><span class="sig-paren">)</span><a class="headerlink" href="#runthis.server.config.Config" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
+<dt id="runthis.server.config.Config.certfile">
+<code class="sig-name descname">certfile</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#runthis.server.config.Config.certfile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="runthis.server.config.Config.command">
 <code class="sig-name descname">command</code><em class="property">: str</em><em class="property"> = 'python3'</em><a class="headerlink" href="#runthis.server.config.Config.command" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -100,6 +105,11 @@
 <dl class="attribute">
 <dt id="runthis.server.config.Config.host">
 <code class="sig-name descname">host</code><em class="property">: str</em><em class="property"> = '127.0.0.1'</em><a class="headerlink" href="#runthis.server.config.Config.host" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="runthis.server.config.Config.keyfile">
+<code class="sig-name descname">keyfile</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#runthis.server.config.Config.keyfile" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">

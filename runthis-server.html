@@ -85,8 +85,8 @@ $ pip install runthis-server
 </pre></div>
 </div>
 </div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-usage">
+<h2>Test Usage<a class="headerlink" href="#test-usage" title="Permalink to this headline">¶</a></h2>
 <p>You can start up the server with the <code class="docutils literal notranslate"><span class="pre">runthis-server</span></code> command line utility.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ runthis-server --help
 usage: runthis-server <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--config CONFIG<span class="o">]</span>
@@ -97,6 +97,22 @@ optional arguments:
 </pre></div>
 </div>
 </div>
+<div class="section" id="production-usage">
+<h2>Production Usage<a class="headerlink" href="#production-usage" title="Permalink to this headline">¶</a></h2>
+<p>For production, we recomment using
+<a class="reference external" href="https://pgjones.gitlab.io/hypercorn"><code class="docutils literal notranslate"><span class="pre">hypercorn</span></code></a>, as the server here is
+a Quart application. To use RunThis Server + hypercorn together, run the
+following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ hypercorn runthis.server.main:hypercorn
+</pre></div>
+</div>
+<p><strong>Note:</strong> Currently there is no way to pass a path to a config file into the
+runthis server when running under hypercorn. The server will just look for
+a <code class="docutils literal notranslate"><span class="pre">runthis-server.yml</span></code> file in the current working directory and use that.
+If such a file does not exist, the default values will be used! Please
+change directory into the location of the <code class="docutils literal notranslate"><span class="pre">runthis-server.yml</span></code> file before
+running hypercorn.</p>
+</div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>By default, the server is configured to run by looking for a <code class="docutils literal notranslate"><span class="pre">runthis-server.yml</span></code> file
@@ -104,7 +120,12 @@ in the current working directory. You can pass in a specific configuration file 
 the <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</p>
 <p>All configuration variables are optional. The following lists there meaning and
 default values. Usually, these appear as top-level keys in the YAML file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># The command variable is a string that lists ths command, or path</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># The path to the public certificate file. This is currently only</span>
+<span class="c1"># used by the hypercorn interface, and is passed directly though</span>
+<span class="c1"># to hypercorn&#39;s configuration.</span>
+<span class="nt">certfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">None</span>
+
+<span class="c1"># The command variable is a string that lists ths command, or path</span>
 <span class="c1"># to run whenever a new instance is requested. Nominally, this is</span>
 <span class="c1"># a command that starts a REPL, but doesn&#39;t have to be.</span>
 <span class="nt">command</span><span class="p">:</span> <span class="s">&quot;python3&quot;</span>
@@ -130,6 +151,11 @@ default values. Usually, these appear as top-level keys in the YAML file:</p>
 <span class="c1">#  0.0.0.0     -&gt; IP address of server as seen by https://api.ipify.org</span>
 <span class="c1">#  IP or CNAME -&gt; Same IP or CNAME</span>
 <span class="nt">host</span><span class="p">:</span> <span class="s">&quot;127.0.0.1&quot;</span>
+
+<span class="c1"># The path to the private certificate file. This is currently only</span>
+<span class="c1"># used by the hypercorn interface, and is passed directly though</span>
+<span class="c1"># to hypercorn&#39;s configuration.</span>
+<span class="nt">certfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">None</span>
 
 <span class="c1"># The port variable is an int that specifies the port number that the</span>
 <span class="c1"># the RunThis Server itself operates on. The TTY redirects go to</span>
@@ -197,7 +223,8 @@ source code for you.</p>
     <ul>
 <li><a class="reference internal" href="#">runthis-server</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#test-usage">Test Usage</a></li>
+<li><a class="reference internal" href="#production-usage">Production Usage</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
 <li><a class="reference internal" href="#request-parameters">Request Parameters</a></li>
 </ul>
