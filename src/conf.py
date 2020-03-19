@@ -293,7 +293,7 @@ texinfo_documents = [
 #
 # RunThis special tools
 #
-runthis_server = "https://runthis.xonsh.org"
+runthis_server = "https://runthis.xonsh.org:80"
 
 repos = ["runthis-server", "runthis-client", "runthis-sphinxext"]
 for repo in repos:
